@@ -1,8 +1,15 @@
 import React, {Component} from 'react';
+import products from './products';
+import Product from './Product';
 class Electronics extends Component {
     render() {
         return (
-            <h1>Sanity</h1>
+        <div className="container">
+            <div className="col-sm-4">
+                <h3>Electronics</h3>
+                <Product />
+            </div>
+        </div>
         )
     }
 }

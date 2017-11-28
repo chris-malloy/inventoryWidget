@@ -15,7 +15,7 @@ class App extends Component {
 			<Search />
 			<Title />
 			<SportingGoods />
-			
+			<Electronics />
 		</div>
 		);
 	}

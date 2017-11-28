@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import products from './products'
+
 
 class SearchBar extends Component{
         constructor(){
