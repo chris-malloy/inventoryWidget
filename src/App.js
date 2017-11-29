@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
+
 // custom components
-import Search from './SearchBar';
-import Title from './Title.js';
-import SportingGoods from './SportingGoods';
-import Electronics from './Electronics';
+import SearchBar from './SearchBar';
+import ProductTable from './ProductTable.js';
 
 
 
@@ -12,10 +11,8 @@ class App extends Component {
 	render() {
 		return (
 		<div className="App">
-			<Search />
-			<Title />
-			<SportingGoods />
-			<Electronics />
+			<SearchBar />
+			<ProductTable />
 		</div>
 		);
 	}

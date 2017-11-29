@@ -1,30 +1,21 @@
 import React, { Component } from 'react';
 
-
+// We are making a new Component. This Component is a class, but 
+// also a subclass of the React.Component
 class SearchBar extends Component{
-        constructor(){
-            super();
-            this.state = {};
-        }
-    	handleSubmit(event){
-		event.preventDefault();
-        var value = document.getElementById('searchTerm').value;
+	// EVERY component MUST have a render method (Excpet the dumb ones)
+	render(){
+		return(
+			<form className="search-bar">
+				<input type="text" placeholder="Search..." />
+				<div>
+					<input id="in-stock" type="checkbox" /> Only show products in stock
+				</div>
+			</form>
+		)
 	}
-    render(){
-        return(
-            <div className="col-sm-12">
-                <form onSubmit={this.handleSubmit}>
-                    <input id="searchTerm" type="text" placeholder="Search..." className="col-sm-12" />
-                    <input type="checkbox" className="col-sm-12" /> Only Show products in stock
-                </form>
-            </div>
-        )
-    }
 }
 
-export default SearchBar;
-
-// TODO
-// - fix search bar look
-// - fix checkbox look
-// - add checkbox functionality
+// We need to export the class so that whoever imports it (app.js)
+// will know what to import
+export default SearchBar
