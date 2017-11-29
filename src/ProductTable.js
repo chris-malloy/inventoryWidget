@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import productData from './productData';
+import ProductCategoryRow from './ProductCategoryRow';
 
 class ProductTable extends Component {
     constructor() {
@@ -9,6 +10,8 @@ class ProductTable extends Component {
             productsByCategory: {},
         }
     }
+
+    // ensure formData runs before render
     componentWillMount() {
         this.formatData();
     }
@@ -28,7 +31,8 @@ class ProductTable extends Component {
     render() {
         var rows = [];
         for(var key in this.state.productsByCategory){
-            console.log(this.state.productsByCategory[key]);
+            // console.log(this.state.productsByCategory[key]);
+            rows.push(<ProductCategoryRow header={key} />)
         }
         return ( 
             <div className = "product-table">
