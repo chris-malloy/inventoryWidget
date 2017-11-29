@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import productData from './productData';
 import ProductCategoryRow from './ProductCategoryRow';
+import ProductRow from './ProductRow';
 
 class ProductTable extends Component {
     constructor() {
@@ -32,19 +33,23 @@ class ProductTable extends Component {
         var rows = [];
         for(var key in this.state.productsByCategory){
             // console.log(this.state.productsByCategory[key]);
-            rows.push(<ProductCategoryRow header={key} />)
+            rows.push(<ProductCategoryRow key={key} header={key} />)
+            this.state.productsByCategory[key].map((item,index)=>{
+                rows.push(<ProductRow key={item.name} item={item} />)
+            })
         }
         return ( 
             <div className = "product-table">
                 <table className = "table table-striped">
                     <thead>
                         <tr>
-                            <th>Head</th>
+                            <th>Name</th>
                             <th>Price</th>
                         </tr>
                     </thead>
                     <tbody>
                         {/* products go here */}
+                        {rows}
                     </tbody>
                 </table>
             </div>
