@@ -24,7 +24,7 @@ class ProductTable extends Component {
         var tempProducts = [];
         this.safeProductData.data.map((item)=>{
             const itemName = item.name.toLowerCase();
-            if(item.name.indexOf(searchTerm) != -1){
+            if(itemName.indexOf(searchTerm) != -1){
                 tempProducts.push(item)
             }
         });
@@ -45,7 +45,6 @@ class ProductTable extends Component {
         })
     } 
     render() {
-        console.log(this.props.searchTerm);
         var rows = [];
         for(var key in this.state.productsByCategory){
             rows.push(<ProductCategoryRow key={key} header={key} />)
