@@ -6,7 +6,7 @@
 ### App 2 - Temperature App
 ##### User enters a temperature and app tells if it is above or below the boiling point of water.  State is used to update the TemperatureInput components, one each for Celcius and Fahrenheit.  The two components talk to their parent component, TemperatureApp, which then updates it via setState when the other's user input has been changed.  
 
-
+## React Documentation
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
