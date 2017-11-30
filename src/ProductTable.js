@@ -6,7 +6,9 @@ import ProductRow from './ProductRow';
 class ProductTable extends Component {
     constructor() {
         super();
+        // safe internal instance variables
         this.productData = productData;
+        this.safeProductData = productData;
         this.state = {
             productsByCategory: {},
         }
@@ -16,10 +18,25 @@ class ProductTable extends Component {
     componentWillMount() {
         this.formatData();
     }
+
+    componentWillReceiveProps(newProps){
+        const searchTerm = newProps.searchTerm.toLowerCase();
+        var tempProducts = [];
+        this.safeProductData.data = productData.data;
+        this.safeProductData.data.map((item)=>{
+            const itemName = item.name.toLowercase();
+            if(item.name.indexOf(searchTerm) != -1){
+                tempProducts.push(item)
+                console.log(tempProducts)
+            }
+        });
+        this.productData.data = tempProducts;
+        this.formatData();
+    };
+
     formatData() {
         var tempProducts = {};
         this.productData.data.map((product) => {
-            // console.log(product.category);
             if(tempProducts[product.category] === undefined){
                 tempProducts[product.category] = [];
             }
@@ -30,9 +47,9 @@ class ProductTable extends Component {
         })
     } 
     render() {
+        console.log(this.props.searchTerm);
         var rows = [];
         for(var key in this.state.productsByCategory){
-            // console.log(this.state.productsByCategory[key]);
             rows.push(<ProductCategoryRow key={key} header={key} />)
             this.state.productsByCategory[key].map((item,index)=>{
                 rows.push(<ProductRow key={item.name} item={item} />)
