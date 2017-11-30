@@ -25,24 +25,47 @@ class TemperatureApp extends Component{
     constructor(){
         super();
         this.state = {
-            temperature: ''
+            temperature: '32',
+            scale: 'c',
         }
     this.handleFahrenheitChange = this.handleFahrenheitChange.bind(this)
     this.handleCelciusChange = this.handleCelciusChange.bind(this)
     }
+
     handleCelciusChange(value){
         console.log("Someone changed Celius input to " + value);
+        this.setState({
+            scale: "c",
+            temperature: value
+        })
     }
+
     handleFahrenheitChange(value){
         console.log("Someone change Fahrenheit Input " + value);
+        this.setState({
+            scale: "f",
+            temperature: value
+        })  
     }
+
     render(){
-        console.log(tryConvert("101",toCelsius));
+        // set up local vars to save on typing
+        const scale = this.state.scale;
+        const temperature = this.state.temperature;
+
+        if(scale === "c"){
+            var fTemp = tryConvert(temperature, toFahrenheit)
+            var cTemp = temperature;
+        } else if (scale === "f"){
+            var fTemp = temperature;
+            var cTemp = tryConvert(temperature, toCelsius)
+        }
+
         return(
-            <div>
-                <TemperatureInput scale="f" onChange={this.handleFahrenheitChange} />,
-                <TemperatureInput scale="c" onChange={this.handleCelciusChange} />,
-                <BoilingVerdict />
+            <div id="temp-app">
+                <TemperatureInput temperature={fTemp} scale="f" onChange={this.handleFahrenheitChange} />,
+                <TemperatureInput temperature={cTemp} scale="c" onChange={this.handleCelciusChange} />,
+                <BoilingVerdict temperature={parseFloat(cTemp)} />
             </div>
         )
     }
