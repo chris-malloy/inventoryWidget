@@ -7,8 +7,8 @@ class ProductTable extends Component {
     constructor() {
         super();
         // safe internal instance variables
+        this.safeProductData = Object.assign({}, productData)
         this.productData = productData;
-        this.safeProductData = productData;
         this.state = {
             productsByCategory: {},
         }
@@ -22,12 +22,10 @@ class ProductTable extends Component {
     componentWillReceiveProps(newProps){
         const searchTerm = newProps.searchTerm.toLowerCase();
         var tempProducts = [];
-        this.safeProductData.data = productData.data;
         this.safeProductData.data.map((item)=>{
-            const itemName = item.name.toLowercase();
+            const itemName = item.name.toLowerCase();
             if(item.name.indexOf(searchTerm) != -1){
                 tempProducts.push(item)
-                console.log(tempProducts)
             }
         });
         this.productData.data = tempProducts;
