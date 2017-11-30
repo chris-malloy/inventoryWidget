@@ -1,3 +1,13 @@
+# React Apps
+## Description 
+###### A Collection of two React App to experiment with and learn how components work
+### App 1 - Inventory Widget
+##### Parses out a given data set into a table.  State is updated based on in-stock status and category of the item.
+### App 2 - Temperature App
+##### User enters a temperature and app tells if it is above or below the boiling point of water.  State is used to update the TemperatureInput components, one each for Celcius and Fahrenheit.  The two components talk to their parent component, TemperatureApp, which then updates it via setState when the other's user input has been changed.  
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
